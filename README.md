@@ -17,12 +17,18 @@ Query Attributes:
 
   ### _SQL pseuodo code_
  ```sql
-[SELECT Seller_ID, COUNT(Case_ID) AS Rejection_Count
-FROM Global_PI_Database
-WHERE Case_Status = 'Resolved' 
-  AND Reason_Code = 'PI_Non_Compliant'
-GROUP BY Seller_ID
-ORDER BY Rejection_Count DESC;]
+[/* Categorizing Unstructured Outbound Messages into Structured Error Types */
+SELECT 
+    Case_ID,
+    Agent_ID,
+    CASE 
+        WHEN LOWER(Outbound_Message) LIKE '%document%' OR LOWER(Outbound_Message) LIKE '%attach%' THEN 'Missed Document'
+        WHEN LOWER(Outbound_Message) LIKE '%criteria%' OR LOWER(Outbound_Message) LIKE '%guideline%' THEN 'Incorrect Standard'
+        WHEN LOWER(Outbound_Message) LIKE '%link%' OR LOWER(Outbound_Message) LIKE '%url%' THEN 'Broken Link/Resource'
+        WHEN LOWER(Outbound_Message) LIKE '%tone%' OR LOWER(Outbound_Message) LIKE '%polite%' THEN 'Soft Skill/Professionalism'
+        ELSE 'Process Gap/Other'
+    END AS Error_Category
+FROM Quality_Nugget_Master_Table;]
 ```
 
 
