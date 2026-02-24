@@ -17,8 +17,7 @@ Query Attributes:
 
   ### _SQL pseuodo code_
   ```sql
-  [/* Categorizing Unstructured Outbound Messages into Structured Error Types */
-SELECT 
+  [SELECT 
     Case_ID,
     Agent_ID,
     CASE 
@@ -28,8 +27,9 @@ SELECT
         WHEN LOWER(Outbound_Message) LIKE '%tone%' OR LOWER(Outbound_Message) LIKE '%polite%' THEN 'Soft Skill/Professionalism'
         ELSE 'Process Gap/Other'
     END AS Error_Category
-FROM Quality_Nugget_Master_Table; ]
+FROM Quality_Nugget_Master_Table;]
 ```
+
 
 
   ## 📊 Dashboard & Visualization Strategy
