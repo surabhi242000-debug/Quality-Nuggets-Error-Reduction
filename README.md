@@ -17,18 +17,19 @@ Query Attributes:
 
   ### _SQL pseuodo code_
  ```sql
-[/* Categorizing Unstructured Outbound Messages into Structured Error Types */
-SELECT 
-    Case_ID,
-    Agent_ID,
+[SELECT 
+    o.Seller_ID, 
+    o.Agent_ID, 
+    e.Reason_Code,
+    o.Outbound_Message, -- Included for validation
     CASE 
-        WHEN LOWER(Outbound_Message) LIKE '%document%' OR LOWER(Outbound_Message) LIKE '%attach%' THEN 'Missed Document'
-        WHEN LOWER(Outbound_Message) LIKE '%criteria%' OR LOWER(Outbound_Message) LIKE '%guideline%' THEN 'Incorrect Standard'
-        WHEN LOWER(Outbound_Message) LIKE '%link%' OR LOWER(Outbound_Message) LIKE '%url%' THEN 'Broken Link/Resource'
-        WHEN LOWER(Outbound_Message) LIKE '%tone%' OR LOWER(Outbound_Message) LIKE '%polite%' THEN 'Soft Skill/Professionalism'
-        ELSE 'Process Gap/Other'
+        WHEN LOWER(o.Outbound_Message) LIKE '%missing%doc%' THEN 'Missed Document'
+        WHEN LOWER(o.Outbound_Message) LIKE '%standard%' THEN 'Incorrect Standard'
+        ELSE 'Other' 
     END AS Error_Category
-FROM Quality_Nugget_Master_Table;]
+FROM Outbound_Logs o
+RIGHT JOIN Error_Audit e 
+    ON o.Case_ID = e.Case_ID;]
 ```
 
 
