@@ -28,7 +28,8 @@ SELECT
         WHEN LOWER(Outbound_Message) LIKE '%tone%' OR LOWER(Outbound_Message) LIKE '%polite%' THEN 'Soft Skill/Professionalism'
         ELSE 'Process Gap/Other'
     END AS Error_Category
-FROM Quality_Nugget_Master_Table; ]```
+FROM Quality_Nugget_Master_Table; ]
+```
 
 
   ## 📊 Dashboard & Visualization Strategy
