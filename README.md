@@ -20,11 +20,11 @@ Query Attributes:
 [SELECT 
     o.Seller_ID, 
     o.Agent_ID, 
-    e.Reason_Code,
-    o.Outbound_Message, -- Included for validation
+    o.Reason_Code,
+    e.Outbound_Message, -- Included for validation
     CASE 
-        WHEN LOWER(o.Outbound_Message) LIKE '%missing%doc%' THEN 'Missed Document'
-        WHEN LOWER(o.Outbound_Message) LIKE '%standard%' THEN 'Incorrect Standard'
+        WHEN LOWER(e.Outbound_Message) LIKE '%missing%doc%' THEN 'Missed Document'
+        WHEN LOWER(e.Outbound_Message) LIKE '%standard%' THEN 'Incorrect Standard'
         ELSE 'Other' 
     END AS Error_Category
 FROM Outbound_Logs o
