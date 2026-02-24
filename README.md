@@ -16,6 +16,7 @@ Query Attributes:
 - Feature Engineering: Developed a Keyword Classification Logic using CASE statements and LIKE operators to categorize raw outbound messages into specific error types (e.g., "Missed Document," "Incorrect Standard," "Policy Misinterpretation").
 
   ###_SQL pseuodo code_
+  ```sql
   /* Categorizing Unstructured Outbound Messages into Structured Error Types */
 SELECT 
     Case_ID,
@@ -28,6 +29,7 @@ SELECT
         ELSE 'Process Gap/Other'
     END AS Error_Category
 FROM Quality_Nugget_Master_Table;
+```
 
 
   ## 📊 Dashboard & Visualization Strategy
