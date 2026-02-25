@@ -21,6 +21,7 @@ Query Attributes:
     o.Seller_ID, 
     o.Agent_ID, 
     o.Reason_Code,
+    t.Team_Name,
     e.Outbound_Message, -- Included for validation
     CASE 
         WHEN LOWER(e.Outbound_Message) LIKE '%missing%doc%' THEN 'Missed Document'
@@ -29,9 +30,10 @@ Query Attributes:
     END AS Error_Category
 FROM Outbound_Logs o
 RIGHT JOIN Error_Audit e 
-    ON o.Case_ID = e.Case_ID;]
+    ON o.Case_ID = e.Case_ID
+LEFT JOIN Team_Roster t  -- Joining the team metadata
+    ON o.Agent_ID = t.Agent_ID;]
 ```
-
 
 
   ## 📊 Dashboard & Visualization Strategy
