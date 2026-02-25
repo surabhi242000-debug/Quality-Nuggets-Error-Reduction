@@ -48,7 +48,7 @@ I developed a weekly monitoring dashboard to drive accountability across three l
 
   
 
-!(Dashboard Preview)([https://github.com/surabhi242000-debug/Quality-Nuggets-Error-Reduction/blob/main/Sample_Weekly_Error_Analysis_Dashboard.png]).
+![Dashboard Preview](https://github.com/surabhi242000-debug/Quality-Nuggets-Error-Reduction/blob/main/Sample_Weekly_Error_Analysis_Dashboard.png).
 
 
 
