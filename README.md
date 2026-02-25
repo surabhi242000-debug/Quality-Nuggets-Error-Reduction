@@ -46,6 +46,13 @@ I developed a weekly monitoring dashboard to drive accountability across three l
 
 - Agent Performance (Bar Chart): Pinpointed specific Agent IDs with high error densities, moving away from "blanket training" to "targeted coaching."
 
+  
+
+!(Dashboard Preview)([https://github.com/surabhi242000-debug/Quality-Nuggets-Error-Reduction/blob/main/Sample_Weekly_Error_Analysis_Dashboard.png]).
+
+
+
+
   ## 🔍 Root Cause & Actionable Insights
   
 - SOP Clarity: Identified "Grey Zones" in the existing documentation where language was ambiguous, leading to a global SOP Revision.
